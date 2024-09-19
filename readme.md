@@ -13,6 +13,8 @@ These instructions will get you a copy of the project up and running on your loc
     npm i cors
     npm i zod
     npm i dotenv
+    npm i bcrypt
+    npm i jsonwebtoken
     npm i http-status
     npm i -D nodemon
     npm i ts-node-dev --save-dev

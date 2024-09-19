@@ -8,3 +8,8 @@ export type CUser = {
   phone: string;
   address: string;
 };
+
+export type userLogin = {
+  email: string;
+  password: string;
+};

@@ -7,7 +7,14 @@ const router = express.Router();
 
 router.post(
   '/signup',
+  validateRequest(userZodValidation.createUserZodValidation),
   userController.createUser,
+);
+
+router.post(
+  '/signin',
+  validateRequest(userZodValidation.loginZodValidation),
+  userController.signIn,
 );
 
 export const userRouter = router;

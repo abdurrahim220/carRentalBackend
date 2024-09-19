@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express';
 import notFound from './middleware/notFount';
 import router from './router';
 import globalErrorHandler from './middleware/GlobalErrorHandler';
+
 const app = express();
 
 app.use(express.json());

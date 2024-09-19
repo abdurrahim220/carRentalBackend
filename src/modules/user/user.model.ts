@@ -2,7 +2,8 @@ import { model, Schema } from 'mongoose';
 import { CUser } from './user.interface';
 import AppError from '../../error/AppError';
 import httpStatus from 'http-status';
-
+import bcrypt from 'bcrypt';
+import config from '../../config';
 const userSchema = new Schema<CUser>(
   {
     name: { type: String, required: true },
@@ -59,4 +60,30 @@ userSchema.pre('save', async function (next) {
 
   next();
 });
+
+userSchema.pre('save', async function (next) {
+  const user = this as CUser;
+  user.password = await bcrypt.hash(
+    user.password,
+    Number(config.bcrypt_salt_rounds),
+  );
+  next();
+});
+
+userSchema.post('save', function (doc, next) {
+  doc.password = '';
+  next();
+});
+
+userSchema.statics.isUserExistsByCustomId = async function (id: string) {
+  return await UserModel.findOne({ id }).select('+password');
+};
+
+userSchema.statics.isPasswordMatched = async function (
+  plainTextPassword,
+  hashedPassword,
+) {
+  return await bcrypt.compare(plainTextPassword, hashedPassword);
+};
+
 export const UserModel = model<CUser>('User', userSchema);
