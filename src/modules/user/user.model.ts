@@ -4,6 +4,7 @@ import AppError from '../../error/AppError';
 import httpStatus from 'http-status';
 import bcrypt from 'bcrypt';
 import config from '../../config';
+
 const userSchema = new Schema<CUser>(
   {
     name: { type: String, required: true },
@@ -75,15 +76,5 @@ userSchema.post('save', function (doc, next) {
   next();
 });
 
-userSchema.statics.isUserExistsByCustomId = async function (id: string) {
-  return await UserModel.findOne({ id }).select('+password');
-};
-
-userSchema.statics.isPasswordMatched = async function (
-  plainTextPassword,
-  hashedPassword,
-) {
-  return await bcrypt.compare(plainTextPassword, hashedPassword);
-};
 
 export const UserModel = model<CUser>('User', userSchema);

@@ -4,6 +4,7 @@ import sendResponse from '../../utils/sendResponse';
 import { userServices } from './user.services';
 
 const createUser = catchAsync(async (req, res) => {
+  
   const result = await userServices.createUserIntoDB(req.body);
 
   sendResponse(res, {
