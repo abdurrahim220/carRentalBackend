@@ -58,7 +58,13 @@ These instructions will get you a copy of the project up and running on your loc
 To run this project, you will need to add the following environment variables to your .env file
 
 ```sh
-PORT
-DATABASE_ACCESS
-NODE_ENV
+PORT=5000
+DATABASE_ACCESS=mongodb+srv://usrname:password@cluster0.hncbqqn.mongodb.net/databaseName?retryWrites=true&w=majority
+NODE_ENV=development
+BCRYPT_SALT_ROUNDS=12
+JWT_ACCESS_SECRET=130fb4f665d44f20bb19f4e8ae07d44512e2cb04fea8c5492741bf5d496150b7
+JWT_REFRESH_SECRET=130fb4f665d44f20bb19f4e8ae
+JWT_ACCESS_EXPIRES_IN=1D
+JWT_REFRESH_EXPIRES_IN=30D
+
 ```
