@@ -16,7 +16,7 @@ const createCarZodValidation = z.object({
     description: z.string().nonempty('Description is required'),
     color: carColorsZod,
     isElectric: z.boolean(),
-    status: z.enum(['available', 'unavailable']),
+    status: z.enum(['available', 'unavailable']).optional(),
     features: z.array(carFeaturesZod),
     pricePerHour: z.string().nonempty('Price per hour is required'),
     isDeleted: z.boolean().default(false),

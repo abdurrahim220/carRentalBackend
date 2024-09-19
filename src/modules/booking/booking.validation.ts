@@ -11,7 +11,7 @@ const bookingValidation = z.object({
     user: z.string().nonempty('User ID is required'),
     car: z.string().nonempty('Car ID is required'),
     startTime: timeFormat,
-    endTime: timeFormat,
+    endTime: timeFormat.default('null'),
     totalCost: z.number().min(0).default(0),
   }),
 });
