@@ -4,7 +4,6 @@ import sendResponse from '../../utils/sendResponse';
 import { userServices } from './user.services';
 
 const createUser = catchAsync(async (req, res) => {
-  
   const result = await userServices.createUserIntoDB(req.body);
 
   sendResponse(res, {
@@ -16,7 +15,6 @@ const createUser = catchAsync(async (req, res) => {
 });
 
 const signIn = catchAsync(async (req, res) => {
-
   const { user, token } = await userServices.signInUser(req.body);
 
   sendResponse(res, {
@@ -28,7 +26,18 @@ const signIn = catchAsync(async (req, res) => {
   });
 });
 
+const getAllUser = catchAsync(async (req, res) => {
+  const result = await userServices.getAllUser();
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'User list fetched successfully',
+    data: result,
+  });
+});
+
 export const userController = {
   createUser,
   signIn,
+  getAllUser,
 };

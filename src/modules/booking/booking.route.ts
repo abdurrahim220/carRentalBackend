@@ -1,13 +1,16 @@
 import express from 'express';
 import validateRequest from '../../middleware/validateRequest';
-
+import { bookingZodValidation } from './booking.validation';
+import { bookingController } from './booking.controller';
 
 const router = express.Router();
 
-router.post('/create', validateRequest(carZodValidation.createCarZodValidation),carController.createCarIntoDB);
-router.get('/', carController.getAllCarFromDB);
-router.get('/:id', carController.getSingleCarFromDB);
-router.delete('/:id', carController.deleteCarFromDB);
-router.patch('/update/:id', validateRequest(carZodValidation.updateCarZodValidation),carController.updateCarIntoDB);
+router.post(
+  '/create',
+  validateRequest(bookingZodValidation.bookingValidation),
+  bookingController.createBookingIntoDB,
+);
+router.get('/', bookingController.getAllBookingFromDB);
+router.get('/:id', bookingController.getSingleBookingFromDB);
 
 export const bookingsRouter = router;

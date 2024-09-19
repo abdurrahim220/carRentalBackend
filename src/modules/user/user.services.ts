@@ -38,7 +38,13 @@ const signInUser = async (payload: userLogin) => {
   };
 };
 
+const getAllUser = async () => {
+  const result = await UserModel.find();
+  return result;
+};
+
 export const userServices = {
   createUserIntoDB,
   signInUser,
+  getAllUser,
 };
