@@ -2,6 +2,12 @@
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
+## clone the repo and run the command
+
+```sh
+  npm i 
+```
+
 ## Prerequisites
 
  What things you need to install the packages and how to install them.Install npm globally using npm (Node Package Manager). Open your terminal and run:
@@ -59,12 +65,11 @@ To run this project, you will need to add the following environment variables to
 
 ```sh
 PORT=5000
-DATABASE_ACCESS=mongodb+srv://usrname:password@cluster0.hncbqqn.mongodb.net/databaseName?retryWrites=true&w=majority
+DATABASE_ACCESS=mongodb+srv://usrName:password@cluster0.hncbqqn.mongodb.net/databaseName?retryWrites=true&w=majority
 NODE_ENV=development
 BCRYPT_SALT_ROUNDS=12
 JWT_ACCESS_SECRET=130fb4f665d44f20bb19f4e8ae07d44512e2cb04fea8c5492741bf5d496150b7
 JWT_REFRESH_SECRET=130fb4f665d44f20bb19f4e8ae
 JWT_ACCESS_EXPIRES_IN=1D
 JWT_REFRESH_EXPIRES_IN=30D
-
 ```
