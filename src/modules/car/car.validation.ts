@@ -22,7 +22,20 @@ const createCarZodValidation = z.object({
     isDeleted: z.boolean().default(false),
   }),
 });
+const updateCarZodValidation = z.object({
+  body: z.object({
+    name: z.string().nonempty('Name is required').optional(),
+    description: z.string().nonempty('Description is required').optional(),
+    color: carColorsZod.optional(),
+    isElectric: z.boolean().optional(),
+    status: z.enum(['available', 'unavailable']).optional(),
+    features: z.array(carFeaturesZod).optional(),
+    pricePerHour: z.string().nonempty('Price per hour is required').optional(),
+    isDeleted: z.boolean().default(false).optional(),
+  }),
+});
 
 export const carZodValidation = {
   createCarZodValidation,
+  updateCarZodValidation,
 };
