@@ -12,7 +12,10 @@ router.post(
   validateRequest(bookingZodValidation.bookingValidation),
   bookingController.createBookingIntoDB,
 );
-router.get('/',auth(['admin']), bookingController.getAllBookingFromDB);
+router.get('/my-bookings', auth(['user']), bookingController.getUserBookings);
+
+router.get('/', auth(['admin']), bookingController.getAllBookingFromDB);
 router.get('/:id', bookingController.getSingleBookingFromDB);
+router.put('/return', auth(['admin']), bookingController.returnCar);
 
 export const bookingsRouter = router;

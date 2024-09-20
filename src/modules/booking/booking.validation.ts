@@ -8,11 +8,8 @@ const timeFormat = z.string().regex(/^([01]\d|2[0-3]):([0-5]\d)$/, {
 const bookingValidation = z.object({
   body: z.object({
     date: z.string().date(),
-    user: z.string().nonempty('User ID is required'),
     car: z.string().nonempty('Car ID is required'),
     startTime: timeFormat,
-    endTime: timeFormat.default('null'),
-    totalCost: z.number().min(0).default(0),
   }),
 });
 

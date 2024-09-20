@@ -9,8 +9,9 @@ app.use(express.json());
 app.use('/api/v1', router);
 
 app.get('/', (req: Request, res: Response) => {
-  res.send('Hello World!');
+  res.send('Server is running perfectly!!');
 });
+
 app.use(notFound);
 app.use(globalErrorHandler);
 
