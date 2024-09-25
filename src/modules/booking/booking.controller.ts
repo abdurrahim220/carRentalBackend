@@ -4,7 +4,6 @@ import catchAsync from '../../utils/catchAsync';
 import sendResponse from '../../utils/sendResponse';
 import { bookingServices } from './booking.services';
 
-
 const createBookingIntoDB = catchAsync(async (req, res) => {
   const userId = (req as any).user._id;
 

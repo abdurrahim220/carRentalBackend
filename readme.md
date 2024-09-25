@@ -58,6 +58,7 @@ These instructions will get you a copy of the project up and running on your loc
 ## You can read in the following blog
 
 - [prettier blog link](https://blog.logrocket.com/linting-typescript-eslint-prettier)
+- [data blog link](https://chatgpt.com/share/66ee1d1e-908c-8013-831d-32572bd2a30a)
 
 ## Environment Variables
 

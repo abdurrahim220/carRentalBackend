@@ -52,47 +52,34 @@ const getUserBookingsFromDB = async (userId: string) => {
   return result;
 };
 
-
-
-
 const returnCarFromDB = async (bookingId: string, endTime: string) => {
-  // Ensure the result of findById is awaited before calling populate
   const booking = await BookingModel.findById(bookingId).populate('car');
 
   if (!booking) {
-    throw new Error('Booking not found');
+    throw new AppError('Booking not found', httpStatus.NOT_FOUND);
   }
 
-  // Convert startTime and endTime to hours
+  const car = booking.car as typeof CarModel.prototype;
+
   const startHour = parseInt(booking.startTime.split(':')[0], 10);
   const endHour = parseInt(endTime.split(':')[0], 10);
 
-  // Calculate total hours used
   const hoursUsed = endHour - startHour;
 
-  // Make sure the car object is populated, so you can access its pricePerHour
-  const pricePerHour = booking.car.pricePerHour;
+  const pricePerHour = car.pricePerHour;
 
-  // Calculate total cost
   const totalCost = hoursUsed * pricePerHour;
 
-  // Update booking's endTime and totalCost
   booking.endTime = endTime;
   booking.totalCost = totalCost;
   await booking.save();
 
-  // Update car status to available
-  await CarModel.findByIdAndUpdate(booking.car._id, { status: 'available' });
+  await CarModel.findByIdAndUpdate(car._id, { status: 'available' });
 
-  // Populate the user details (this is another async operation, so ensure you await)
   await booking.populate('user');
 
   return booking;
 };
-
-
-
-
 
 export const bookingServices = {
   createBookingIntoDB,

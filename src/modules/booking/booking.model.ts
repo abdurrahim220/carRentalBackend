@@ -37,7 +37,6 @@ const bookingSchema = new Schema<IBooking>(
   },
 );
 
-// Create the Booking model
 const BookingModel = mongoose.model<IBooking>('Booking', bookingSchema);
 
 export default BookingModel;

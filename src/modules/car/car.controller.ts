@@ -4,22 +4,22 @@ import sendResponse from '../../utils/sendResponse';
 import { carServices } from './car.services';
 
 const createCarIntoDB = catchAsync(async (req, res) => {
-    const result = await carServices.createCarIntoDB(req.body);
+  const result = await carServices.createCarIntoDB(req.body);
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
     message: 'Car Created Successfully',
-    data:result
+    data: result,
   });
 });
 
-const getAllCarFromDB= catchAsync(async (req, res) => {
-    const result = await carServices.getAllCarFromDB();
+const getAllCarFromDB = catchAsync(async (req, res) => {
+  const result = await carServices.getAllCarFromDB();
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
     message: 'Car retrieved Successfully',
-    data:result
+    data: result,
   });
 });
 
@@ -29,7 +29,7 @@ const getSingleCarFromDB = catchAsync(async (req, res) => {
     statusCode: httpStatus.OK,
     success: true,
     message: 'Car retrieved Successfully',
-    data:result
+    data: result,
   });
 });
 const deleteCarFromDB = catchAsync(async (req, res) => {
@@ -38,23 +38,23 @@ const deleteCarFromDB = catchAsync(async (req, res) => {
     statusCode: httpStatus.OK,
     success: true,
     message: 'Car Created Successfully',
-    data:result
+    data: result,
   });
 });
 const updateCarIntoDB = catchAsync(async (req, res) => {
-  const result = await carServices.updateCarIntoDB(req.params.id, req.body);  
+  const result = await carServices.updateCarIntoDB(req.params.id, req.body);
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
     message: 'Car Created Successfully',
-    data:result
+    data: result,
   });
 });
 
-export const carController ={
+export const carController = {
   createCarIntoDB,
   getAllCarFromDB,
   getSingleCarFromDB,
   deleteCarFromDB,
-  updateCarIntoDB
-}
+  updateCarIntoDB,
+};

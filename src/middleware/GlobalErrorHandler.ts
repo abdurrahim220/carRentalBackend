@@ -11,7 +11,6 @@ import handleCastError from '../error/handleCastError';
 import AppError from '../error/AppError';
 import handleDuplicateError from '../error/handleDublicateError';
 
-
 const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
   let statusCode = 500;
   let message = 'Internal Server Error';

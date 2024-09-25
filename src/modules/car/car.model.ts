@@ -50,7 +50,6 @@ const carSchema = new Schema<ICar>(
   },
 );
 
-
 const CarModel = mongoose.model<ICar>('Car', carSchema);
 
 export default CarModel;
